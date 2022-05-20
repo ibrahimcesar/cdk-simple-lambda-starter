@@ -1,4 +1,4 @@
-# CDK v2 Simple Lambda HTTP ApiGateway Starter
+# 🌴 CDK v2 Simple Lambda HTTP ApiGateway Starter
 
 ## Alpha L2 Constructs
 
