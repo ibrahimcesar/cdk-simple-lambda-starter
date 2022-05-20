@@ -1,5 +1,5 @@
 import { Construct } from "constructs";
-import { Stack, StackProps } from "aws-cdk-lib";
+import { CfnOutput, Stack, StackProps } from "aws-cdk-lib";
 
 import * as lambda from "aws-cdk-lib/aws-lambda";
 
@@ -20,26 +20,32 @@ class SimpleLambdaStack extends Stack {
 
     const fn = new lambda.Function(this, `${process.env.LAMBDA_NAME}`, {
       architecture: lambda.Architecture.ARM_64,
-      code: lambda.Code.fromAsset(path.join(__dirname, "dist")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "..", "dist")),
       handler: "index.simple",
       runtime: lambda.Runtime.NODEJS_16_X,
     });
 
-    const endpoint = new apigateway.HttpApi(this, `${process.env.API_NAME}`, {
-      apiName: `${process.env.API_NAME}`,
-      description: `${process.env.API_DESCRIPTION}`,
-    });
+    const endpoint = new apigateway.HttpApi(
+      this,
+      `ApiGwt${process.env.API_NAME}`,
+      {
+        apiName: `Endpoint${process.env.API_NAME}`,
+        description: `${process.env.API_DESCRIPTION}`,
+      }
+    );
 
     const fnIntegration = new HttpLambdaIntegration(
-      `${process.env.API_NAME}`,
+      `Integration${process.env.API_NAME}`,
       fn
     );
 
     endpoint.addRoutes({
-      path: '/',
+      path: "/",
       methods: [apigateway.HttpMethod.GET],
-      integration: fnIntegration
-    })
+      integration: fnIntegration,
+    });
+
+    new CfnOutput(this, "HttpApiUrl", { value: endpoint.apiEndpoint });
   }
 }
 

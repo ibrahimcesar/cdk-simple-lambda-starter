@@ -1,0 +1,126 @@
+{
+  "version": "18.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "SimpleApi.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "SimpleApi.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "SimpleApi": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/us-east-2",
+      "properties": {
+        "templateFile": "SimpleApi.template.json",
+        "tags": {
+          "project": "SimpleApi"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-us-east-2",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-us-east-2",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-us-east-2/5e47b5dbe3c75c99e45c1f2a82ff8fd8154d5eabf02d6d416e6dc8b09430805e.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "SimpleApi.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-us-east-2",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "SimpleApi.assets"
+      ],
+      "metadata": {
+        "/SimpleApi": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "project",
+                "Value": "SimpleApi"
+              }
+            ]
+          }
+        ],
+        "/SimpleApi/SimpleApi/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SimpleApiServiceRole696CEE77"
+          }
+        ],
+        "/SimpleApi/SimpleApi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SimpleApiE1BED582"
+          }
+        ],
+        "/SimpleApi/ApiGwtSimpleApi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiGwtSimpleApi128B5A7B"
+          }
+        ],
+        "/SimpleApi/ApiGwtSimpleApi/DefaultStage/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiGwtSimpleApiDefaultStage53AE8ED1"
+          }
+        ],
+        "/SimpleApi/ApiGwtSimpleApi/GET--/IntegrationSimpleApi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiGwtSimpleApiGETIntegrationSimpleApiA592BDD7"
+          }
+        ],
+        "/SimpleApi/ApiGwtSimpleApi/GET--/IntegrationSimpleApi-Permission": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiGwtSimpleApiGETIntegrationSimpleApiPermission5CB4EDC0"
+          }
+        ],
+        "/SimpleApi/ApiGwtSimpleApi/GET--/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiGwtSimpleApiGETF448A1BA"
+          }
+        ],
+        "/SimpleApi/HttpApiUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HttpApiUrl"
+          }
+        ],
+        "/SimpleApi/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/SimpleApi/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/SimpleApi/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "SimpleApi"
+    }
+  }
+}
