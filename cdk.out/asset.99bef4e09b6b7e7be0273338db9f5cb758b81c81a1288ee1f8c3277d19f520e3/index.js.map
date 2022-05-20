@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/lambda/index.ts", "../src/lambda/simple.ts"],
-  "sourcesContent": ["export { handler as simple } from \"./simple\";\n", "import { Handler } from \"aws-lambda\";\n\nexport const handler: Handler = async event => {\n  return {\n    body: `Hello lambda!\n      ${JSON.stringify(event, null, 2)}\"\n    `,\n    headers: {\n      \"Content-Type\": \"text/plain;charset=utf-8\",\n      \"X-Clacks-Overhead\": \"GNU Terry Pratchett\",\n    },\n    statusCode: 200,\n  };\n};\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;;;ACEO,IAAM,UAAmB,OAAM,UAAS;AAC7C,SAAO;AAAA,IACL,MAAM;AAAA,QACF,KAAK,UAAU,OAAO,MAAM,CAAC;AAAA;AAAA,IAEjC,SAAS;AAAA,MACP,gBAAgB;AAAA,MAChB,qBAAqB;AAAA,IACvB;AAAA,IACA,YAAY;AAAA,EACd;AACF;",
-  "names": []
-}
