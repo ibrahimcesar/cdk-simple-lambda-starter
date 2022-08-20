@@ -1,8 +1,6 @@
-# 🌴 CDK v2 Simple Lambda HTTP ApiGateway Starter
+# 🌴 CDK v2 Simple Lambda HTTP ApiGateway Model
 
-## Alpha L2 Constructs
-
-This project uses L2 CDK v2 constructs in `alpha` stage for `apigatewayv2` use of HTTP API and its integration. I decided to go with HTTP API because of the lower costs for this kind of API.
+// TBD
 
 ## Beware export lambda
 

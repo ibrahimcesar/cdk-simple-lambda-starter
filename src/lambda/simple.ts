@@ -1,16 +1,14 @@
-import { Handler } from "aws-lambda";
+import { APIGatewayEvent, Handler } from "aws-lambda";
+import { Config } from "@config";
 
-export const handler: Handler = async event => {
+export const handler: Handler = async (event: APIGatewayEvent) => {
   return {
     body: `Hello lambda!
 
-${JSON.stringify(event, null, 2)}"
+      ${JSON.stringify(event, null, 2)}"
 
     `,
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8",
-      "X-Clacks-Overhead": "GNU Terry Pratchett",
-    },
+    headers: Config.headers,
     statusCode: 200,
   };
 };

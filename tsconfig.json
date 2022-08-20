@@ -24,7 +24,11 @@
       "typeRoots": [
           "node_modules/@types"
       ],
-      "useDefineForClassFields": true
+      "useDefineForClassFields": true,
+      "baseUrl": ".",
+      "paths": {
+        "@config": ["./config.ts"],
+      }
   },
   "exclude": [
       "node_modules",

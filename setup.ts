@@ -1,11 +1,9 @@
 import { buildSync } from "esbuild";
 import { App } from "aws-cdk-lib";
+import { Config } from "@config";
 import { SimpleLambdaStack } from "./src/stack";
-import * as dotenv from "dotenv";
 
 import path from "node:path";
-
-dotenv.config();
 
 buildSync({
   bundle: true,
@@ -19,14 +17,15 @@ buildSync({
 });
 
 const app = new App();
-new SimpleLambdaStack(app, `${process.env.STACK_PROJECT}`, {
-  description: `${process.env.STACK_DESCRIPTION}`,
-  stackName: `${process.env.STACK_NAME}`,
+new SimpleLambdaStack(app, `${Config.stack.project}`, {
+  description: `${Config.stack.description}`,
+  stackName: `${Config.stack.name}`,
   env: {
-    region: `${process.env.AWS_REGION}`,
+    region: `${Config.region}`,
   },
   tags: {
-    project: `${process.env.STACK_PROJECT}`,
+    project: `${Config.stack.project}`,
+    deployedAt: `${new Date().toDateString()}`,
   },
 });
 
