@@ -9,7 +9,7 @@
   "private": true,
   "devDependencies": {
     "@types/aws-lambda": "^8.10.102",
-    "aws-cdk-lib": "^2.38.1",
+    "aws-cdk-lib": "^2.80.0",
     "constructs": "^10.1.81",
     "esbuild": "^0.15.5",
     "ts-node": "^10.9.1",
